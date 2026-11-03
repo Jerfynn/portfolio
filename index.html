@@ -292,6 +292,12 @@ a:hover { text-decoration-thickness: 2px; }
 .group-head h3 { font-size: 1.5rem; font-weight: 700; font-stretch: 87.5%; line-height: 1.15; margin: 0 0 0.4rem; }
 .group-head p { margin: 0; color: var(--muted); font-size: 0.9375rem; max-width: 26ch; }
 .proj + .proj { margin-top: 2.25rem; }
+.project-visuals { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1rem; margin: 2rem 0 2.75rem; }
+.visual-card { margin: 0; min-width: 0; overflow: hidden; border: 1px solid var(--rule); border-radius: 8px; background: color-mix(in srgb, var(--paper) 82%, var(--rule) 18%); }
+.visual-art { display: block; width: 100%; height: auto; aspect-ratio: 16 / 9; }
+.visual-card figcaption { padding: 0.75rem 0.9rem 0.85rem; color: var(--muted); font-size: 0.875rem; line-height: 1.4; }
+.visual-card figcaption strong { display: block; margin-bottom: 0.15rem; color: var(--ink); font-size: 0.9375rem; }
+@media (max-width: 700px) { .project-visuals { grid-template-columns: 1fr; } }
 .proj h4 { font-size: 1.25rem; font-weight: 700; line-height: 1.25; margin: 0; }
 .proj.lead h4 { font-size: clamp(1.5rem, 2.6vw, 1.875rem); font-stretch: 112%; letter-spacing: -0.01em; }
 .proj p { margin: 0.45rem 0 0; max-width: 62ch; }
@@ -440,6 +446,62 @@ a:hover { text-decoration-thickness: 2px; }
     <div class="wrap">
       <h2>Projects</h2>
       <p class="intro">Grouped by where the software runs. Most of these are public on GitHub.</p>
+
+      <div class="project-visuals" aria-label="Illustrations of robotics project areas">
+        <figure class="visual-card">
+          <svg class="visual-art" viewBox="0 0 640 360" role="img" aria-labelledby="sonar-title">
+            <title id="sonar-title">Illustration of a scanning sonar display</title>
+            <rect width="640" height="360" fill="#0A1822"/>
+            <path d="M0 62H640M0 298H640M62 0V360M578 0V360" stroke="#23404E" stroke-width="2"/>
+            <circle cx="320" cy="190" r="132" fill="#102B37" stroke="#31586A" stroke-width="2"/>
+            <circle cx="320" cy="190" r="88" fill="none" stroke="#31586A" stroke-width="2"/>
+            <circle cx="320" cy="190" r="44" fill="none" stroke="#31586A" stroke-width="2"/>
+            <path d="M188 190H452M320 58V322M227 97L413 283M413 97L227 283" stroke="#31586A" stroke-width="1.5"/>
+            <path d="M320 190L420 104A132 132 0 0 1 448 193Z" fill="#7FC6E3" opacity=".24"/>
+            <path d="M320 190L420 104" stroke="#7FC6E3" stroke-width="4" stroke-linecap="round"/>
+            <circle cx="380" cy="158" r="7" fill="#FF6B35"/><circle cx="268" cy="232" r="5" fill="#FF6B35"/><circle cx="358" cy="264" r="4" fill="#E4EEF1"/>
+            <circle cx="320" cy="190" r="5" fill="#E4EEF1"/>
+            <text x="28" y="34" fill="#93ACB8" font-family="monospace" font-size="16" letter-spacing="2">PING360 · LIVE SCAN</text>
+            <text x="470" y="330" fill="#7FC6E3" font-family="monospace" font-size="13">BEARING 042°</text>
+          </svg>
+          <figcaption><strong>SonarViewer</strong>Scanning sonar, echo returns and target tracking.</figcaption>
+        </figure>
+        <figure class="visual-card">
+          <svg class="visual-art" viewBox="0 0 640 360" role="img" aria-labelledby="flight-title">
+            <title id="flight-title">Illustration of a drone ground control display</title>
+            <rect width="640" height="360" fill="#0A1822"/>
+            <rect x="18" y="18" width="604" height="324" rx="10" fill="#10232E" stroke="#31586A" stroke-width="2"/>
+            <rect x="18" y="18" width="604" height="38" rx="10" fill="#173442"/>
+            <circle cx="40" cy="37" r="5" fill="#FF6B35"/><text x="57" y="42" fill="#E4EEF1" font-family="monospace" font-size="14">JER GROUND STATION</text>
+            <rect x="34" y="72" width="370" height="244" rx="5" fill="#122E39" stroke="#31586A"/>
+            <path d="M34 132H404M34 192H404M34 252H404M94 72V316M154 72V316M214 72V316M274 72V316M334 72V316" stroke="#23404E" stroke-width="1"/>
+            <path d="M75 268L122 234L167 248L221 174L280 190L348 112" fill="none" stroke="#7FC6E3" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+            <circle cx="348" cy="112" r="7" fill="#FF6B35"/><path d="M338 112h20m-10-10v20" stroke="#FF6B35" stroke-width="2"/>
+            <rect x="420" y="72" width="184" height="72" rx="5" fill="#173442"/><text x="436" y="98" fill="#93ACB8" font-family="monospace" font-size="12">FLIGHT MODE</text><text x="436" y="126" fill="#7FC6E3" font-family="monospace" font-size="21">AUTO</text>
+            <rect x="420" y="154" width="184" height="72" rx="5" fill="#173442"/><text x="436" y="180" fill="#93ACB8" font-family="monospace" font-size="12">BATTERY</text><text x="436" y="208" fill="#E4EEF1" font-family="monospace" font-size="21">84%</text><rect x="512" y="191" width="72" height="8" rx="4" fill="#23404E"/><rect x="512" y="191" width="60" height="8" rx="4" fill="#7FC6E3"/>
+            <rect x="420" y="236" width="184" height="80" rx="5" fill="#173442"/><text x="436" y="261" fill="#93ACB8" font-family="monospace" font-size="12">LINK</text><circle cx="446" cy="287" r="5" fill="#83D6A5"/><text x="460" y="292" fill="#E4EEF1" font-family="monospace" font-size="14">CONNECTED</text>
+          </svg>
+          <figcaption><strong>JerGroundStation</strong>Mission route, MAVLink status and flight telemetry.</figcaption>
+        </figure>
+        <figure class="visual-card">
+          <svg class="visual-art" viewBox="0 0 640 360" role="img" aria-labelledby="vehicle-title">
+            <title id="vehicle-title">Illustration of a remotely operated underwater vehicle and sensor links</title>
+            <rect width="640" height="360" fill="#0A1822"/>
+            <path d="M0 72Q80 58 160 72T320 72T480 72T640 72" fill="none" stroke="#31586A" stroke-width="3"/>
+            <path d="M0 84Q80 70 160 84T320 84T480 84T640 84" fill="none" stroke="#23404E" stroke-width="2"/>
+            <path d="M0 286H640M0 314H640" stroke="#23404E" stroke-width="2" stroke-dasharray="8 12"/>
+            <text x="28" y="38" fill="#93ACB8" font-family="monospace" font-size="15" letter-spacing="2">VEHICLE TELEMETRY</text>
+            <g stroke="#7FC6E3" stroke-width="3" fill="none"><path d="M170 178H278M362 178H470"/><path d="M222 144V110H84M222 212V250H84M410 144V110H554M410 212V250H554"/></g>
+            <rect x="278" y="146" width="84" height="64" rx="18" fill="#173442" stroke="#7FC6E3" stroke-width="3"/>
+            <path d="M294 146V126H346V146M292 210L274 248M348 210L366 248" fill="none" stroke="#7FC6E3" stroke-width="4"/>
+            <circle cx="320" cy="178" r="13" fill="#FF6B35"/><path d="M309 178H331M320 167V189" stroke="#0A1822" stroke-width="2"/>
+            <g fill="#102B37" stroke="#31586A" stroke-width="2"><rect x="26" y="92" width="116" height="38" rx="6"/><rect x="26" y="232" width="116" height="38" rx="6"/><rect x="498" y="92" width="116" height="38" rx="6"/><rect x="498" y="232" width="116" height="38" rx="6"/></g>
+            <g fill="#E4EEF1" font-family="monospace" font-size="14" text-anchor="middle"><text x="84" y="116">AHRS · GPS</text><text x="84" y="256">PRESSURE</text><text x="556" y="116">SONAR</text><text x="556" y="256">THRUSTERS</text></g>
+            <text x="286" y="300" fill="#93ACB8" font-family="monospace" font-size="13">ONBOARD CONTROL ↔ GROUND STATION</text>
+          </svg>
+          <figcaption><strong>Marine robotics</strong>Onboard control connecting vehicle sensors and the ground station.</figcaption>
+        </figure>
+      </div>
 
       <div class="group">
         <div class="group-head">
