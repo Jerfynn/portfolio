@@ -11,12 +11,14 @@
 <meta property="og:url" content="https://jerfynn.github.io/">
 <meta property="og:title" content="Jerfin K — Robotics & Embedded Software Engineer">
 <meta property="og:description" content="Software for drones, autonomous surface boats and underwater vehicles: ground stations, sonar tools, sensor integration and onboard control.">
+<meta property="og:image" content="https://jerfynn.github.io/jerfin.png">
 
 <!-- Twitter Card -->
-<meta name="twitter:card" content="summary">
+<meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:url" content="https://jerfynn.github.io/">
 <meta name="twitter:title" content="Jerfin K — Robotics & Embedded Software Engineer">
 <meta name="twitter:description" content="Software for drones, autonomous surface boats and underwater vehicles: ground stations, sonar tools, sensor integration and onboard control.">
+<meta name="twitter:image" content="https://jerfynn.github.io/jerfin.png">
 
 <!-- Favicon & Theme Color -->
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='14' fill='%230E2230'/%3E%3Cpath d='M16 6 A10 10 0 0 1 26 16' fill='none' stroke='%23FF6B35' stroke-width='3' stroke-linecap='round'/%3E%3Cpath d='M16 11 A5 5 0 0 1 21 16' fill='none' stroke='%237FC6E3' stroke-width='2.5' stroke-linecap='round'/%3E%3Ccircle cx='16' cy='16' r='2.5' fill='%23FF6B35'/%3E%3C/svg%3E">
@@ -93,7 +95,7 @@ body::before {
   z-index: 10;
   background: var(--paper);
 }
-img, canvas { max-width: 100%; }
+img { max-width: 100%; height: auto; }
 a { color: var(--depth); text-decoration-thickness: 1px; text-underline-offset: 0.2em; }
 a:hover { text-decoration-thickness: 2px; }
 :focus-visible { outline: 2px solid var(--signal); outline-offset: 3px; border-radius: 2px; }
@@ -158,10 +160,10 @@ a:hover { text-decoration-thickness: 2px; }
   letter-spacing: -0.03em;
   margin: 0 0 clamp(1.5rem, 4vw, 2.75rem);
 }
-.hero-grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.05fr); gap: clamp(2rem, 5vw, 4.5rem); align-items: center; }
+.hero-grid { display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.95fr); gap: clamp(2rem, 5vw, 4.5rem); align-items: center; }
 .role { font-size: clamp(1.125rem, 1.6vw, 1.3125rem); font-weight: 600; font-stretch: 100%; margin: 0 0 1rem; }
-.lede { font-size: clamp(1.25rem, 2.1vw, 1.5625rem); line-height: 1.38; margin: 0 0 1.25rem; max-width: 30ch; font-weight: 400; }
-.status { color: var(--muted); margin: 0 0 1.75rem; max-width: 46ch; }
+.lede { font-size: clamp(1.25rem, 2.1vw, 1.5625rem); line-height: 1.38; margin: 0 0 1.25rem; max-width: 32ch; font-weight: 400; }
+.status { color: var(--muted); margin: 0 0 1.75rem; max-width: 48ch; }
 .actions { display: flex; flex-wrap: wrap; gap: 0.75rem; }
 .btn {
   display: inline-flex; align-items: center;
@@ -176,12 +178,79 @@ a:hover { text-decoration-thickness: 2px; }
 .btn:hover { background: color-mix(in srgb, var(--ink) 8%, transparent); }
 .btn.primary { background: var(--ink); color: var(--btn-ink); }
 .btn.primary:hover { background: var(--depth); border-color: var(--depth); }
-.sonar { margin: 0; }
-.sonar-frame { position: relative; width: 100%; aspect-ratio: 2 / 1.1; }
-.sonar-frame canvas { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
-.sonar figcaption { margin-top: 0.6rem; font-size: 0.875rem; color: var(--muted); text-align: center; }
+
+/* Profile Card & Frame */
+.profile-figure {
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.profile-frame {
+  position: relative;
+  width: 100%;
+  max-width: 23rem;
+  aspect-ratio: 4 / 4.7;
+  border-radius: 24px;
+  overflow: hidden;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  border: 1px solid var(--rule);
+  background: color-mix(in srgb, var(--paper) 70%, var(--rule) 30%);
+  box-shadow: 0 16px 40px -16px rgba(14, 34, 48, 0.16);
+  transition: transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.3s ease;
+}
+.profile-frame:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 24px 48px -16px rgba(14, 34, 48, 0.22);
+}
+.profile-backdrop {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 50% 32%, color-mix(in srgb, var(--depth) 22%, transparent) 0%, transparent 72%),
+              linear-gradient(180deg, transparent 40%, color-mix(in srgb, var(--ink) 6%, transparent) 100%);
+  z-index: 1;
+}
+.profile-photo {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+  display: block;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) .profile-frame {
+    box-shadow: 0 20px 48px -12px rgba(0, 0, 0, 0.6);
+    background: color-mix(in srgb, var(--paper) 80%, var(--rule) 20%);
+  }
+  :root:not([data-theme="light"]) .profile-backdrop {
+    background: radial-gradient(circle at 50% 28%, color-mix(in srgb, var(--depth) 32%, transparent) 0%, transparent 68%),
+                radial-gradient(circle at 80% 85%, color-mix(in srgb, var(--signal) 15%, transparent) 0%, transparent 60%);
+  }
+}
+:root[data-theme="dark"] .profile-frame {
+  box-shadow: 0 20px 48px -12px rgba(0, 0, 0, 0.6);
+  background: color-mix(in srgb, var(--paper) 80%, var(--rule) 20%);
+}
+:root[data-theme="dark"] .profile-backdrop {
+  background: radial-gradient(circle at 50% 28%, color-mix(in srgb, var(--depth) 32%, transparent) 0%, transparent 68%),
+              radial-gradient(circle at 80% 85%, color-mix(in srgb, var(--signal) 15%, transparent) 0%, transparent 60%);
+}
+:root[data-theme="light"] .profile-frame {
+  box-shadow: 0 16px 40px -16px rgba(14, 34, 48, 0.16);
+  background: color-mix(in srgb, var(--paper) 70%, var(--rule) 30%);
+}
+:root[data-theme="light"] .profile-backdrop {
+  background: radial-gradient(circle at 50% 32%, color-mix(in srgb, var(--depth) 22%, transparent) 0%, transparent 72%),
+              linear-gradient(180deg, transparent 40%, color-mix(in srgb, var(--ink) 6%, transparent) 100%);
+}
+
 @media (max-width: 860px) {
   .hero-grid { grid-template-columns: 1fr; }
+  .profile-frame { max-width: 20rem; margin: 1rem auto 0; }
   .lede { max-width: 36ch; }
 }
 
@@ -312,12 +381,11 @@ a:hover { text-decoration-thickness: 2px; }
           <a class="btn" href="https://www.linkedin.com/in/jerfin-k" target="_blank" rel="noopener">LinkedIn</a>
         </div>
       </div>
-      <figure class="sonar">
-        <div class="sonar-frame" role="img" aria-label="Animated sonar sector scan sweeping back and forth, showing echoes from a seabed wall and three targets.">
-          <canvas id="echo"></canvas>
-          <canvas id="beam"></canvas>
+      <figure class="profile-figure">
+        <div class="profile-frame">
+          <div class="profile-backdrop" aria-hidden="true"></div>
+          <img class="profile-photo" src="jerfin.png" alt="Jerfin K" width="465" height="506">
         </div>
-        <figcaption>A simulated Ping360 sector scan, drawn the way my SonarViewer app draws it.</figcaption>
       </figure>
     </div>
   </section>
@@ -591,202 +659,6 @@ a:hover { text-decoration-thickness: 2px; }
       localStorage.setItem('theme', nextTheme);
     });
   }
-})();
-
-// Ping360 Sonar Simulation Canvas
-(() => {
-  const frame = document.querySelector('.sonar-frame');
-  const echo = document.getElementById('echo');
-  const beam = document.getElementById('beam');
-  if (!frame || !echo.getContext) return;
-  const ex = echo.getContext('2d');
-  const bx = beam.getContext('2d');
-  const root = document.documentElement;
-  const motion = window.matchMedia('(prefers-reduced-motion: reduce)');
-
-  const SAMPLES = 110;
-  const STEP = 1;
-  const SPEED = 55;
-  const targets = [
-    { a: 48, r: 0.43, s: 1.0 },
-    { a: 101, r: 0.63, s: 0.85 },
-    { a: 137, r: 0.30, s: 0.75 },
-    { a: 118, r: 0.49, s: 0.5 }
-  ];
-
-  let W = 0, H = 0, cx = 0, cy = 0, R = 0;
-  let col = null, font = 'sans-serif';
-  let angle = 0, dir = 1, pass = 0, last = 0, raf = 0, visible = true;
-
-  const cssVar = n => getComputedStyle(root).getPropertyValue(n).trim();
-  const rgb = h => {
-    h = h.replace('#', '');
-    if (h.length === 3) h = h.split('').map(c => c + c).join('');
-    const n = parseInt(h, 16);
-    return [(n >> 16) & 255, (n >> 8) & 255, n & 255];
-  };
-  const rad = d => d * Math.PI / 180;
-
-  function readColors() {
-    col = { depth: rgb(cssVar('--depth')), signal: rgb(cssVar('--signal')), rule: cssVar('--rule'), muted: cssVar('--muted') };
-    font = getComputedStyle(document.body).fontFamily || 'sans-serif';
-  }
-
-  function hash(a, b) {
-    let h = Math.imul(a + 1013, 374761393) ^ Math.imul(b + 7, 668265263);
-    h = Math.imul(h ^ (h >>> 13), 1274126177);
-    h ^= h >>> 16;
-    return (h >>> 0) / 4294967295;
-  }
-
-  const wall = a => 0.8 + 0.07 * Math.sin(a * 0.045 + 0.6) + 0.035 * Math.sin(a * 0.19 + 1.3);
-
-  function level(a, i, seed) {
-    const r = (i + 0.5) / SAMPLES;
-    let s = 0;
-    if (r < 0.06) s += 0.45 * (1 - r / 0.06);
-    const d = r - wall(a);
-    s += d < 0 ? 0.95 * Math.exp(-(d * d) / 0.0003) : 0.8 * Math.exp(-d / 0.045);
-    for (const t of targets) {
-      const da = (a - t.a) / 2.6, dr = (r - t.r) / 0.02;
-      s += t.s * Math.exp(-(da * da + dr * dr) / 2);
-    }
-    const n = hash(Math.round(a), i * 31 + seed);
-    s += n * n * n * 0.35;
-    return Math.min(1, s);
-  }
-
-  function wedge(ctx, a0, a1, r0, r1) {
-    const t0 = -rad(a1), t1 = -rad(a0);
-    ctx.beginPath();
-    ctx.arc(cx, cy, r1, t0, t1);
-    ctx.arc(cx, cy, r0, t1, t0, true);
-    ctx.closePath();
-  }
-
-  function drawBeam(a, seed) {
-    const a0 = Math.max(0, a - STEP / 2 - 0.15), a1 = Math.min(180, a + STEP / 2 + 0.15);
-    const [dr, dg, db] = col.depth, [sr, sg, sb] = col.signal;
-    ex.save();
-    wedge(ex, a0, a1, 0, R + 1);
-    ex.clip();
-    ex.clearRect(0, 0, W, H);
-    ex.restore();
-    for (let i = 0; i < SAMPLES; i++) {
-      const s = level(a, i, seed);
-      if (s < 0.05) continue;
-      if (s < 0.62) {
-        ex.fillStyle = `rgba(${dr},${dg},${db},${(0.1 + s * 1.05).toFixed(3)})`;
-      } else {
-        const k = (s - 0.62) / 0.38;
-        ex.fillStyle = `rgba(${Math.round(dr + (sr - dr) * k)},${Math.round(dg + (sg - dg) * k)},${Math.round(db + (sb - db) * k)},0.92)`;
-      }
-      wedge(ex, a0, a1, R * i / SAMPLES, R * (i + 1) / SAMPLES);
-      ex.fill();
-    }
-  }
-
-  function drawAll() {
-    ex.clearRect(0, 0, W, H);
-    for (let a = 0; a <= 180; a += STEP) drawBeam(a, pass);
-  }
-
-  function drawOverlay(a) {
-    bx.clearRect(0, 0, W, H);
-    bx.lineWidth = 1;
-    bx.strokeStyle = col.rule;
-    for (let k = 1; k <= 4; k++) {
-      bx.beginPath();
-      bx.arc(cx, cy, R * k / 4, Math.PI, 2 * Math.PI);
-      bx.stroke();
-    }
-    for (let d = 0; d <= 180; d += 30) {
-      const t = -rad(d);
-      bx.beginPath();
-      bx.moveTo(cx, cy);
-      bx.lineTo(cx + Math.cos(t) * R, cy + Math.sin(t) * R);
-      bx.stroke();
-    }
-    bx.fillStyle = col.muted;
-    bx.font = `500 11px ${font}`;
-    bx.textAlign = 'center';
-    bx.textBaseline = 'top';
-    for (let k = 1; k <= 4; k++) bx.fillText(`${k * 5} m`, cx + R * k / 4, cy + 7);
-    if (a == null) return;
-    const [sr, sg, sb] = col.signal;
-    const tail = a - dir * 14;
-    wedge(bx, Math.max(0, Math.min(a, tail)), Math.min(180, Math.max(a, tail)), 0, R);
-    bx.fillStyle = `rgba(${sr},${sg},${sb},0.10)`;
-    bx.fill();
-    const t = -rad(a);
-    bx.strokeStyle = `rgb(${sr},${sg},${sb})`;
-    bx.lineWidth = 2;
-    bx.beginPath();
-    bx.moveTo(cx, cy);
-    bx.lineTo(cx + Math.cos(t) * R, cy + Math.sin(t) * R);
-    bx.stroke();
-    bx.fillStyle = `rgb(${sr},${sg},${sb})`;
-    bx.beginPath();
-    bx.arc(cx, cy, 3.5, 0, 2 * Math.PI);
-    bx.fill();
-  }
-
-  function tick(now) {
-    raf = 0;
-    if (!visible || motion.matches) return;
-    const dt = last ? Math.min(0.05, (now - last) / 1000) : 0;
-    last = now;
-    const prev = angle;
-    angle += dir * SPEED * dt;
-    if (angle >= 180) { angle = 180; dir = -1; pass++; }
-    else if (angle <= 0) { angle = 0; dir = 1; pass++; }
-    const lo = Math.min(prev, angle), hi = Math.max(prev, angle);
-    for (let a = Math.ceil(lo); a <= Math.floor(hi); a += STEP) drawBeam(a, pass);
-    drawOverlay(angle);
-    raf = requestAnimationFrame(tick);
-  }
-  function start() {
-    if (!raf && visible && !motion.matches && !document.hidden) { last = 0; raf = requestAnimationFrame(tick); }
-  }
-  function stop() {
-    if (raf) cancelAnimationFrame(raf);
-    raf = 0;
-  }
-
-  function size() {
-    const box = frame.getBoundingClientRect();
-    if (!box.width) return;
-    const dpr = Math.min(2, window.devicePixelRatio || 1);
-    W = box.width; H = box.height;
-    for (const c of [echo, beam]) { c.width = Math.round(W * dpr); c.height = Math.round(H * dpr); }
-    ex.setTransform(dpr, 0, 0, dpr, 0, 0);
-    bx.setTransform(dpr, 0, 0, dpr, 0, 0);
-    cx = W / 2;
-    cy = H - 24;
-    R = Math.max(10, Math.min(W / 2 - 20, cy - 4));
-    drawAll();
-    drawOverlay(motion.matches ? null : angle);
-  }
-
-  function refresh() {
-    readColors();
-    if (!W) return;
-    drawAll();
-    drawOverlay(motion.matches ? null : angle);
-  }
-
-  readColors();
-  new ResizeObserver(size).observe(frame);
-  const dark = window.matchMedia('(prefers-color-scheme: dark)');
-  if (dark.addEventListener) dark.addEventListener('change', refresh);
-  new MutationObserver(refresh).observe(root, { attributes: true, attributeFilter: ['data-theme'] });
-  if (motion.addEventListener) motion.addEventListener('change', () => { refresh(); if (motion.matches) stop(); else start(); });
-  new IntersectionObserver(entries => {
-    visible = entries[0].isIntersecting;
-    if (visible) start(); else stop();
-  }).observe(frame);
-  document.addEventListener('visibilitychange', () => { if (document.hidden) stop(); else start(); });
-  if (document.fonts && document.fonts.ready) document.fonts.ready.then(refresh);
 })();
 </script>
 </body>
